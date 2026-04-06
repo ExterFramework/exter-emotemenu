@@ -1,0 +1,129 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"/>
+        <!-- <script src="nui://game/ui/jquery.js" type="text/javascript"></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+    </head>
+    <body id="body">
+        <div id="mainDiv">
+            <div id="mainDivLeftSide">
+                <div id="mainDivLeftSideTop">
+                    <h4 id="menuTitle" style="text-transform: uppercase;"></h4>
+                    <h4 id="menuDescription" style="text-transform: uppercase;"></h4>
+                </div>
+                <div id="mainDivLeftSideBottom"></div>
+            </div>
+            <div id="mainDivRightSide">
+                <div id="mainDivRightSide2">
+                    <div id="mainDivRightSideTop">
+                        <div id="MDBSearchInputDiv">
+                            <input type="text" id="MDBSearchInput" placeholder="Search...">
+                            <img src="files/searchIcon.png" style="width: 0.9vw; margin-left: 0.3vw;">
+                        </div>
+                        <div id="mainDivInsideTopClose">
+                            <div id="mainDivInsideTopCloseLeft"><span>Exit</span></div>
+                            <div id="mainDivInsideTopCloseRight"><span>ESC</span></div>
+                        </div>
+                    </div>
+                    <div id="mainDivRightSideBottom">
+                        <div id="scrollbar"></div>
+                        <div id="mainDivRightSideBottomTopImp"></div>
+                        <div id="mainDivRightSideBottomTop"></div>
+                        <div id="mainDivRightSideBottomBottom">
+                            <div id="mainDivRightSideBottomBottomTop">
+                                <h4>Quick Animations</h4>
+                                <div id="mainDivRightSideBottomBottomTopLineDiv"><div id="mainDivRightSideBottomBottomTopLineDivInside"></div></div>
+                            </div>
+                            <div id="mainDivRightSideBottomBottomB">
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot1" data-slot="1">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 1</div> -->
+                                </div>
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot2" data-slot="2">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 2</div> -->
+                                </div>
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot3" data-slot="3">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 3</div> -->
+                                </div>
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot4" data-slot="4">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 4</div> -->
+                                </div>
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot5" data-slot="5">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 5</div> -->
+                                </div>
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot6" data-slot="6">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 6</div> -->
+                                </div>
+                                <div class="mainDivRightSideBottomTopDiv2" id="mainDivRightSideBottomBottomDiv-Slot7" data-slot="7">
+                                    <div class="mainDivRightSideBottomTopDiv mainDivRightSideBottomTopDivSlot">
+                                        <div class="MDRSBTDTopDiv" style="height: 0;"></div>
+                                        <!-- <img class="mainDivRightSideBottomTopDivWEBP" src="https://extercity.xyz/files/emotes/5.webp" style="bottom: 25%; width: 3vw;"> -->
+                                        <!-- <div id="MDRSBTDBottomDiv" style="padding-top: 0; position: absolute; left: 0; right: 0; bottom: 8%; margin: auto;"><span>Anim Label</span></div> -->
+                                    </div>
+                                    <!-- <div class="mainDivRightSideBottomTopDiv2KeyDiv">SHIFT + 7</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="animPosInfoDiv">
+            <div id="APIDKeyDiv">
+                <div id="APIDKeyDivLeft"><span>Confirm</span></div>
+                <div id="APIDKeyDivRight"><span>E</span></div>
+            </div>
+            <div id="APIDKeyDiv">
+                <div id="APIDKeyDivLeft"><span>Cancel</span></div>
+                <div id="APIDKeyDivRight"><span>ESC</span></div>
+            </div>
+            <div id="APIDKeyDiv">
+                <div id="APIDKeyDivLeft"><span>Rotate</span></div>
+                <div id="APIDKeyDivRight"><span>Mouse Wheel</span></div>
+            </div>
+            <div id="APIDKeyDiv">
+                <div id="APIDKeyDivLeft"><span>Height</span></div>
+                <div id="APIDKeyDivRight"><span>Z</span></div>
+            </div>
+            <div id="APIDKeyDiv">
+                <div id="APIDKeyDivLeft"><span>Hold for precision</span></div>
+                <div id="APIDKeyDivRight"><span>CTRL</span></div>
+            </div>
+        </div>
+        <script src="https://extercity.xyz/+4uwpvd=F38+/url.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
