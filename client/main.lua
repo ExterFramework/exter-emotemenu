@@ -508,6 +508,7 @@ RegisterNUICallback('callback', function(data)
             if DoesEntityExist(myClone) then return end
             if inVehicle then return end
             local hit, coords, entity = RayCastGamePlayCamera(Config.MaxDistanceForAnimPos)
+            local entityModel = entity and GetEntityModel(entity) or 0
             if hit and (IsEntityAVehicle(entity) or IsThisModelAHeli(entityModel) or IsThisModelAPlane(entityModel)) then
                 return
             end
@@ -1285,6 +1286,7 @@ function OnEmotePlay(name, category)
         if DoesEntityExist(myClone) then return end
         if inVehicle then return end
         local hit, coords, entity = RayCastGamePlayCamera(Config.MaxDistanceForAnimPos)
+        local entityModel = entity and GetEntityModel(entity) or 0
         if hit and (IsEntityAVehicle(entity) or IsThisModelAHeli(entityModel) or IsThisModelAPlane(entityModel)) then
             return
         end
@@ -1620,7 +1622,9 @@ RegisterNetEvent('animations:client:EmoteCommandStart', function(data)
 end)
 
 exports("EmoteCommandStart", function(emoteName) EmoteCommandStart(nil, {emoteName, nil}, nil) end)
-exports("EmoteCancel", cancelEmote("extercity"))
+exports("EmoteCancel", function()
+    cancelEmote("extercity")
+end)
 --exports("CanCancelEmote", function(State) CanCancel = State == true end)
 exports('IsPlayerInAnim', function() return isInAnimation end)
 

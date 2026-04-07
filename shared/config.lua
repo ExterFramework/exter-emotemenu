@@ -1,5 +1,8 @@
 Config = {
     ServerCallbacks = {}, -- Don't edit or change
+    EnableResourceFileCleanup = false, -- Removes legacy conflicting files from known resources when enabled.
+    EnableCodeConverter = false, -- Developer helper. Keep disabled on production servers.
+    CodeConverterAce = "exter.emotemenu.convertcode", -- Required ACE permission when code converter is enabled.
     MenuKey = 'F3',
     CanOpenMenu = function()
         if IsPedDeadOrDying(PlayerPedId(), true) then
@@ -71,7 +74,7 @@ Config = {
         exports['exter-textui']:create3DTextUIOnPlayers(name, data)
     end,
     Delete3DTextUIOnPlayer = function(name)
-        exports['exter-textui']:delete3DTextUIOnPlayers(name, data)
+        exports['exter-textui']:delete3DTextUIOnPlayers(name)
     end,
     ShowTextUI = function(name, key)
        -- exports["exter-textui"]:displayTextUI(name, key)
