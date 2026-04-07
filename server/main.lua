@@ -51,53 +51,65 @@ RegisterNetEvent("exter-emotemenu:ptfxSyncProp:server", function(propNet)
 end)
 
 Citizen.CreateThread(function()
-    -- Find resources that contains "smallresources"
-    -- handsup.lua
+    if not Config.EnableResourceFileCleanup then
+        return
+    end
+
     local resourceList = {}
-    for i = 0, GetNumResources(), 1 do
-        local resource_name = GetResourceByFindIndex(i)
-        if resource_name and GetResourceState(resource_name) == "started" then
-            table.insert(resourceList, resource_name)
+    for i = 0, GetNumResources() - 1, 1 do
+        local resourceName = GetResourceByFindIndex(i)
+        if resourceName and GetResourceState(resourceName) == "started" then
+            resourceList[#resourceList + 1] = resourceName
         end
     end
-    local findedResources = {}
-    for k, v in pairs(resourceList) do
-        if string.match(v, "smallresources") then
-            table.insert(findedResources, v)
+
+    local foundResources = {}
+    for _, resourceName in pairs(resourceList) do
+        if string.match(resourceName, "smallresources") then
+            foundResources[#foundResources + 1] = resourceName
         end
     end
-    for k, v in pairs(findedResources) do
-        local loadedFile = LoadResourceFile(v, "client/handusp.lua")
-        if loadedFile ~= nil then
-            local resPath = GetResourcePath(v)
-            print("^0[^3WARNING^0] " .. GetCurrentResourceName() .. " ^1" .. v .. "/client/handsup.lua ^0file deleted by script.")
-            os.remove(resPath .. "/client/handusp.lua")
-            Citizen.Wait(500)
-            StopResource(v)
-            Citizen.Wait(500)
-            StartResource(v)
+
+    local filesToClean = {
+        "client/handusp.lua",
+        "client/crouchprone.lua"
+    }
+
+    for _, resourceName in pairs(foundResources) do
+        local restartRequired = false
+        local resPath = GetResourcePath(resourceName)
+        for _, filePath in pairs(filesToClean) do
+            local loadedFile = LoadResourceFile(resourceName, filePath)
+            if loadedFile ~= nil then
+                print("^0[^3WARNING^0] " .. GetCurrentResourceName() .. " ^1" .. resourceName .. "/" .. filePath .. " ^0file deleted by script.")
+                os.remove(resPath .. "/" .. filePath)
+                restartRequired = true
+            end
         end
-    end
-    -- crouchprone.lua
-    for k, v in pairs(findedResources) do
-        local loadedFile = LoadResourceFile(v, "client/crouchprone.lua")
-        if loadedFile ~= nil then
-            local resPath = GetResourcePath(v)
-            print("^0[^3WARNING^0] " .. GetCurrentResourceName() .. " ^1" .. v .. "/client/crouchprone.lua ^0file deleted by script.")
-            os.remove(resPath .. "/client/crouchprone.lua")
+
+        if restartRequired then
             Citizen.Wait(500)
-            StopResource(v)
+            StopResource(resourceName)
             Citizen.Wait(500)
-            StartResource(v)
+            StartResource(resourceName)
         end
     end
 end)
 
-RegisterNetEvent('exter-emotemenu:convertCode:server', function(code, type)
+RegisterNetEvent('exter-emotemenu:convertCode:server', function(code, convertType)
     local src = source
-    local type = string.lower(type)
+    if not Config.EnableCodeConverter then
+        return
+    end
+    if src ~= 0 and not IsPlayerAceAllowed(src, Config.CodeConverterAce) then
+        return
+    end
+    if type(code) ~= "string" or type(convertType) ~= "string" or #code > 100000 then
+        return
+    end
+    local type = string.lower(convertType)
     local tableString = "return {" .. code .. "}"
-    local loadedFunction, errorMessage = load(tableString)
+    local loadedFunction, errorMessage = load(tableString, "exter-emotemenu:convert", "t", {})
     if loadedFunction then
         local resultTable = loadedFunction()
         for key, value in pairs(resultTable) do
